@@ -9,42 +9,42 @@ int main()
     //initilize the linked list here
     //CODE
 
-    //String will hold command
-    string command;
+    //String will hold input
+    string input;
 
     do
     {
-        //take the command
-        cin >> command;
+        //take the input
+        getline(cin,input);
 
         //commands
-        if (command == "insertEnd"){
+        if (input.substr(0,9) == "insertEnd"){
             cout << "you chose insertEnd\n";
             continue;
         }
-        if (command == "insert"){
+        if (input.substr(0,6) == "insert"){
             cout << "you chose insert\n";
             continue;
         }
-        if (command == "delete"){
+        if (input.substr(0,6) == "delete"){
             cout << "you chose delete\n";
             continue;
         }
-        if (command == "edit"){
+        if (input.substr(0,4) == "edit"){
             cout << "you chose edit\n";
             continue;
         }
-        if (command == "print"){
+        if (input.substr(0,5) == "print"){
             cout << "you chose print\n";
             continue;
         }
-        if (command == "search"){
+        if (input.substr(0,6) == "search"){
             cout << "you chose search\n";
             continue;
         }
 
-        //command was not found
-        cout << "bad command\n";
-    } while (command != "quit");
+        //input was not found
+        cout << "bad input: " << input << "\n";
+    } while (input != "quit");
     return 0;
 }
