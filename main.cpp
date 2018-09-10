@@ -2,49 +2,78 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-
 using namespace std;
+
+//DEFINES
+#define getText getline(cin,text); formatString(text);
+
+//LINKED LIST IMPLEMENTATION
+//CODE
+
+//FUNCTIONS
+std::string formatString(std::string & s)
+{
+    //NEEDS CHECKING THAT STRING IS FORMATTED CORRECTLY (surrounded in quotes and correct size)
+    s.pop_back();
+    return s.erase(0,2);
+}
+
+//MAIN
 int main()
 {
-    //initilize the linked list here
+    //create the linked list here
     //CODE
 
-    //String will hold input
-    string input;
-
+    //strings will hold input
+    string command;
+    int lineNum;
+    string text;
     do
     {
-        //take the input
-        getline(cin,input);
+        //take the command
+        cin >> command;
 
         //commands
-        if (input.substr(0,9) == "insertEnd"){
+        if (command == "insertEnd"){
+            getText
             cout << "you chose insertEnd\n";
+            cout << text << endl;
             continue;
         }
-        if (input.substr(0,6) == "insert"){
+        if (command == "insert"){
+            cin >> lineNum;
+            getText
             cout << "you chose insert\n";
+            cout << lineNum << endl;
+            cout << text << endl;
             continue;
         }
-        if (input.substr(0,6) == "delete"){
+        if (command == "delete"){
+            cin >> lineNum;
             cout << "you chose delete\n";
+            cout << lineNum << endl;
             continue;
         }
-        if (input.substr(0,4) == "edit"){
+        if (command == "edit"){
+            cin >> lineNum;
+            getText
             cout << "you chose edit\n";
+            cout << lineNum << endl;
+            cout << text << endl;
             continue;
         }
-        if (input.substr(0,5) == "print"){
+        if (command == "print"){
             cout << "you chose print\n";
             continue;
         }
-        if (input.substr(0,6) == "search"){
+        if (command == "search"){
+            getText
             cout << "you chose search\n";
+            cout << text << endl;
             continue;
         }
-
-        //input was not found
-        cout << "bad input: " << input << "\n";
-    } while (input != "quit");
+        //clear input before next input
+        getline(cin,text);
+    } while (command != "quit");
     return 0;
 }
