@@ -18,12 +18,12 @@ class LinkedList
 
         Node ()
         {
-            next = NULL;
+            next = nullptr;
             data = "";
         }
         Node (string d)
         {
-            next = NULL;
+            next = nullptr;
             data = d;
         }
     };
@@ -46,7 +46,7 @@ class LinkedList
         int lineNum = 1;
         //print function goes here
         Node * current = head->next;
-        while (current != NULL)
+        while (current != nullptr)
         {
             cout << lineNum++ << " " << current->data << endl;
             current = current->next;
@@ -67,6 +67,7 @@ class LinkedList
         if (index == size + 1)
         {
             addToEnd(text);
+            return;
         }
 
         Node * current = head;
@@ -143,7 +144,7 @@ class LinkedList
         Node * current = head->next;
         int lineNum = 1;
         bool found = false;
-        while(current != NULL)
+        while(current != nullptr)
         {
             if (current->data.find(text)!=std::string::npos)
             {
