@@ -108,7 +108,9 @@ class LinkedList
         if (index > size || index < 1) return;
         if (index == 1)
         {
+            Node * temp = head->next;
             head->next = head->next->next;
+            delete(temp);
             if (size == 1) tail = head;
             size--;
             return;
@@ -122,7 +124,9 @@ class LinkedList
             current = current->next;
         }
         if (index == size) tail = current;
+        Node * temp = current->next;
         current->next = current->next->next;
+        delete(temp);
         size--;
     };
 
@@ -156,7 +160,7 @@ class LinkedList
         }
         if (!found)
         {
-            cout << "Line not found" << endl;
+            cout << "not found" << endl;
         }
     }
 };
