@@ -5,7 +5,7 @@
 using namespace std;
 
 //DEFINES
-#define getText getline(cin,text); formatString(text);
+#define getText getline(cin,text); formatString(text, valid);
 
 //LINKED LIST IMPLEMENTATION
 class LinkedList
@@ -44,7 +44,6 @@ class LinkedList
     void print()
     {
         int lineNum = 1;
-        //print function goes here
         Node * current = head->next;
         while (current != nullptr)
         {
@@ -86,7 +85,6 @@ class LinkedList
     //add to end function
     void addToEnd(string text)
     {
-        //add to end function goes here
         if (size == 0)
         {
             head->next = new Node(text);
@@ -102,8 +100,6 @@ class LinkedList
     //delete function
     void del(int index)
     {
-        //delete function goes here
-        /* EDGE CASES */
         //make sure it is in bounds
         if (index > size || index < 1) return;
         if (index == 1)
@@ -115,7 +111,6 @@ class LinkedList
             size--;
             return;
         }
-        /* EDGE CASES */
 
         Node * current = head;
         
@@ -166,12 +161,15 @@ class LinkedList
 };
 
 //FUNCTIONS
-std::string formatString(std::string & s)
+std::string formatString(std::string & s, bool & valid)
 {
-    //NEEDS CHECKING THAT STRING IS FORMATTED CORRECTLY (surrounded in quotes and correct size)
-    //checks size and cuts end off if too long
-    if (s.length() > 83) s = s.substr(0,83);
+    //checks size
+    if (s.length() > 83) valid = false;
 
+    //check if string if wrapped in quotes correctly
+    if (s[1] != '"' || s[s.size()-1] != '"') valid = false;
+
+    //takes off the quotes and leading space before  opening quote
     s.pop_back();
     return s.erase(0,2);
 }
@@ -186,21 +184,27 @@ int main()
     string command;
     int lineNum;
     string text;
+
+    //only run command if valid is true
+    bool valid;
     do
     {
         //take the command
         cin >> command;
 
+        //input are valid by default
+        valid = true;
+
         //commands
         if (command == "insertEnd"){
             getText
-            ll.addToEnd(text);
+            if(valid) ll.addToEnd(text);
             continue;
         }
         if (command == "insert"){
             cin >> lineNum;
             getText
-            ll.add(text, lineNum);
+            if(valid) ll.add(text, lineNum);
             continue;
         }
         if (command == "delete"){
@@ -211,7 +215,7 @@ int main()
         if (command == "edit"){
             cin >> lineNum;
             getText
-            ll.edit(text, lineNum);
+            if(valid) ll.edit(text, lineNum);
             continue;
         }
         if (command == "print"){
@@ -220,7 +224,7 @@ int main()
         }
         if (command == "search"){
             getText
-            ll.search(text);
+            if(valid) ll.search(text);
             continue;
         }
         //clear input before next input

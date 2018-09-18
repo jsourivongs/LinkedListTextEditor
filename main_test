@@ -1,0 +1,28 @@
+//CUSTOM TEST INPUT:
+// insert 1 "valid size1234567890123456789012345678901234567890123456789012345678901234567890"
+// insertEnd "valid size1234567890123456789012345678901234567890123456789012345678901234567890"
+// insert 1 "invalid size1234567890123456789012345678901234567890123456789012345678901234567890"
+// insertEnd "invalid size1234567890123456789012345678901234567890123456789012345678901234567890"
+// insert 2 "valid quotes"
+// insertEnd "valid quotes"
+// insert 2 "invalid quotes'
+// insertEnd 'invalid quotes"
+// print
+// search "quotes"
+// edit 1 ""now it is just this""
+// edit 1 dont make it this
+// delete 4
+// delete 3 
+// delete 2
+// delete 5
+// print
+// quit
+
+//CUSTOM TEST OUTPUT:
+// 1 valid size1234567890123456789012345678901234567890123456789012345678901234567890
+// 2 valid quotes
+// 3 valid size1234567890123456789012345678901234567890123456789012345678901234567890
+// 4 valid quotes
+// 2 valid quotes
+// 4 valid quotes
+// 1 "now it is just this"
