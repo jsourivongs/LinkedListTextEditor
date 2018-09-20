@@ -166,12 +166,19 @@ std::string formatString(std::string & s, bool & valid)
     //checks size
     if (s.length() > 83) valid = false;
 
-    //check if string if wrapped in quotes correctly
-    if (s[1] != '"' || s[s.size()-1] != '"') valid = false;
+    //trims white space at beginning
+    while (s[0] == ' ')
+    {
+        s.erase(0,1);
+    }
 
-    //takes off the quotes and leading space before  opening quote
+    //check if string if wrapped in quotes correctly
+    if (s[0] != '"' || s[s.size()-1] != '"') valid = false;
+
+    //pops off the quotes
     s.pop_back();
-    return s.erase(0,2);
+    s.erase(0,1);
+    return s;
 }
 
 //MAIN
